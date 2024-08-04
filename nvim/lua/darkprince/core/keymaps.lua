@@ -43,10 +43,6 @@ keymap.set("v", "<C-p>", '"+p', { desc = "Paste from clipboard" })
 -- keymap.set("n", "p", '"*p', { desc = "Paste without clipboard" })
 -- keymap.set("v", "p", '"*p', { desc = "Paste without clipboard" })
 
--- Open terminal and set jk to exit terminal mode
-keymap.set("n", "<C-t>", "<cmd>terminal<CR>", { desc = "Open terminal" })
-keymap.set("t", "jk", "<C-\\><C-n>", { desc = "Exit terminal mode with jk" })
-
 -- delete single character without copying into register
 keymap.set("n", "x", '"_x', { desc = "Delete without yanking" })
 
@@ -59,3 +55,23 @@ keymap.set("v", "<A-k>", ":m '<-2<CR>gv=gv", { desc = "Move selected lines up" }
 keymap.set("n", "<A-j>", ":m .+1<CR>==", { desc = "Move line down" })
 keymap.set("i", "<A-j>", "<Esc>:m .+1<CR>==gi", { desc = "Move line down" })
 keymap.set("v", "<A-j>", ":m '>+1<CR>gv=gv", { desc = "Move selected lines down" })
+
+-- Open terminal in a horizontal split and enter insert mode automatically
+keymap.set("n", "<C-t>", "<cmd>split | terminal<CR>", { desc = "Open terminal in horizontal split and enter insert mode" })
+
+-- Map Ctrl+k in terminal mode to switch back to the previous window
+keymap.set("t", "<C-k>", "<C-\\><C-n><C-w>p", { desc = "Switch back to previous window from terminal" })
+
+-- Automatically enter insert mode when opening terminal or switching to terminal
+vim.api.nvim_create_autocmd("BufEnter", {
+  pattern = "term://*",
+  callback = function()
+    vim.cmd('startinsert')
+  end
+})
+
+-- Ensure the terminal always starts in insert mode when opened
+vim.api.nvim_create_autocmd("TermOpen", {
+  pattern = "term://*",
+  command = "startinsert"
+})

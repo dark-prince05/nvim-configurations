@@ -20,3 +20,4 @@ require("lazy").setup({ { import = "darkprince.plugins" }, { import = "darkprinc
     notify = false,
   },
 })
+
