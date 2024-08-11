@@ -4,8 +4,8 @@ return {
   version = "*",
   opts = {
     options = {
-      mode = "tabs",
-      separator_style = "slant",
+      mode = "tab",
+      separator_style = "thin",
     },
   },
 }

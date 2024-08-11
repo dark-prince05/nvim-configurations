@@ -6,8 +6,8 @@ opt.relativenumber = true -- show the current cursor position
 opt.number = true -- show the lines
 
 -- tabs & indentations
-opt.tabstop = 2 -- 4 spaces for tabs (prettier default)
-opt.shiftwidth = 2 -- 4 spaces for indent width
+opt.tabstop = 2 -- 2 spaces for tabs (prettier default)
+opt.shiftwidth = 2 -- 2 spaces for indent width
 opt.expandtab = true -- expand tab to spaces
 opt.autoindent = true -- copy indent from current line when starting a new line
 opt.smartindent = true

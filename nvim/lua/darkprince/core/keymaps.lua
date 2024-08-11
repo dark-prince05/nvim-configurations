@@ -56,22 +56,10 @@ keymap.set("n", "<A-j>", ":m .+1<CR>==", { desc = "Move line down" })
 keymap.set("i", "<A-j>", "<Esc>:m .+1<CR>==gi", { desc = "Move line down" })
 keymap.set("v", "<A-j>", ":m '>+1<CR>gv=gv", { desc = "Move selected lines down" })
 
--- Open terminal in a horizontal split and enter insert mode automatically
-keymap.set("n", "<C-t>", "<cmd>split | terminal<CR>", { desc = "Open terminal in horizontal split and enter insert mode" })
-
--- Map Ctrl+k in terminal mode to switch back to the previous window
-keymap.set("t", "<C-k>", "<C-\\><C-n><C-w>p", { desc = "Switch back to previous window from terminal" })
-
--- Automatically enter insert mode when opening terminal or switching to terminal
-vim.api.nvim_create_autocmd("BufEnter", {
-  pattern = "term://*",
-  callback = function()
-    vim.cmd('startinsert')
-  end
-})
-
--- Ensure the terminal always starts in insert mode when opened
-vim.api.nvim_create_autocmd("TermOpen", {
-  pattern = "term://*",
-  command = "startinsert"
-})
+--buffer keymaps
+keymap.set("n", "<leader>bo", ":enew<CR>", { desc = "Open a new buffer" }) -- Open a new buffer
+keymap.set("n", "<leader>bx", ":bd<CR>", { desc = "Close the current buffer" }) -- Close the current buffer
+keymap.set("n", "<leader>bn", ":bnext<CR>", { desc = "Go to next buffer" }) -- Navigate to the next buffer
+keymap.set("n", "<leader>bp", ":bprevious<CR>", { desc = "Go to previous buffer" }) -- Navigate to the previous buffer
+keymap.set("n", "<leader>bl", ":ls<CR>", { desc = "List all buffers" }) -- List all buffers
+keymap.set("n", "<leader>bb", ":Telescope buffers<CR>", { desc = "Pick a buffer to switch to" }) -- Pick a buffer to switch to (useful with telescope or other plugins)
