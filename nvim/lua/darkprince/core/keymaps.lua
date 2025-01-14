@@ -37,6 +37,7 @@ keymap.set("v", "<C-y>", '"+y', { desc = "Yank to clipboard" })
 
 -- Paste from clipboard
 keymap.set("n", "<C-p>", '"+p', { desc = "Paste from clipboard" })
+keymap.set("i", "<C-p>", '"+p', { desc = "Paste from clipboard" })
 keymap.set("v", "<C-p>", '"+p', { desc = "Paste from clipboard" })
 
 -- -- Paste without using clipboard
@@ -48,12 +49,10 @@ keymap.set("n", "x", '"_x', { desc = "Delete without yanking" })
 
 -- Move line up
 keymap.set("n", "<A-k>", ":m .-2<CR>==", { desc = "Move line up" })
-keymap.set("i", "<A-k>", "<Esc>:m .-2<CR>==gi", { desc = "Move line up" })
 keymap.set("v", "<A-k>", ":m '<-2<CR>gv=gv", { desc = "Move selected lines up" })
 
 -- Move line down
 keymap.set("n", "<A-j>", ":m .+1<CR>==", { desc = "Move line down" })
-keymap.set("i", "<A-j>", "<Esc>:m .+1<CR>==gi", { desc = "Move line down" })
 keymap.set("v", "<A-j>", ":m '>+1<CR>gv=gv", { desc = "Move selected lines down" })
 
 --buffer keymaps
@@ -63,3 +62,17 @@ keymap.set("n", "<leader>bn", ":bnext<CR>", { desc = "Go to next buffer" }) -- N
 keymap.set("n", "<leader>bp", ":bprevious<CR>", { desc = "Go to previous buffer" }) -- Navigate to the previous buffer
 keymap.set("n", "<leader>bl", ":ls<CR>", { desc = "List all buffers" }) -- List all buffers
 keymap.set("n", "<leader>bb", ":Telescope buffers<CR>", { desc = "Pick a buffer to switch to" }) -- Pick a buffer to switch to (useful with telescope or other plugins)
+
+-- Make `0` go to the end of the line
+keymap.set("", "0", "$", { desc = "Go to the end of the line" })
+
+-- Make `1` go to the start of the line
+keymap.set("", "`", "0", { desc = "Go to the start of the line" })
+
+-- Horizontal movement in insert mode
+keymap.set("i", "<M-h>", "<Left>", { desc = "Move left in insert mode" })
+keymap.set("i", "<M-l>", "<Right>", { desc = "Move right in insert mode" })
+
+-- Vertical movement in insert mode
+keymap.set("i", "<M-j>", "<Down>", { desc = "Move down in insert mode" })
+keymap.set("i", "<M-k>", "<Up>", { desc = "Move up in insert mode" })
