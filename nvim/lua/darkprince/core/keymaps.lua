@@ -5,6 +5,7 @@ local keymap = vim.keymap -- for conciseness
 
 -- use jk to exit insert mode
 keymap.set("i", "jk", "<ESC>", { desc = "Exit insert mode with jk" })
+keymap.set("i", "<C-k>", "<ESC>", { desc = "Exit insert mode with jk" })
 
 -- clear search highlights
 keymap.set("n", "<leader>nh", ":nohl<CR>", { desc = "Clear search highlights" })
@@ -59,7 +60,9 @@ keymap.set("v", "<A-j>", ":m '>+1<CR>gv=gv", { desc = "Move selected lines down"
 keymap.set("n", "<leader>bo", ":enew<CR>", { desc = "Open a new buffer" }) -- Open a new buffer
 keymap.set("n", "<leader>bx", ":bd<CR>", { desc = "Close the current buffer" }) -- Close the current buffer
 keymap.set("n", "<leader>bn", ":bnext<CR>", { desc = "Go to next buffer" }) -- Navigate to the next buffer
+keymap.set("n", "\\", ":bnext<CR>", { desc = "Go to next buffer" }) -- Navigate to the next buffer
 keymap.set("n", "<leader>bp", ":bprevious<CR>", { desc = "Go to previous buffer" }) -- Navigate to the previous buffer
+keymap.set("n", "|", ":bprevious<CR>", { desc = "Go to previous buffer" }) -- Navigate to the previous buffer
 keymap.set("n", "<leader>bl", ":ls<CR>", { desc = "List all buffers" }) -- List all buffers
 keymap.set("n", "<leader>bb", ":Telescope buffers<CR>", { desc = "Pick a buffer to switch to" }) -- Pick a buffer to switch to (useful with telescope or other plugins)
 
@@ -76,3 +79,6 @@ keymap.set("i", "<M-l>", "<Right>", { desc = "Move right in insert mode" })
 -- Vertical movement in insert mode
 keymap.set("i", "<M-j>", "<Down>", { desc = "Move down in insert mode" })
 keymap.set("i", "<M-k>", "<Up>", { desc = "Move up in insert mode" })
+
+-- Shortcut for find and replace with placeholders
+keymap.set("n", "<leader>rr", ":%s///g<Left><Left><Left>", { desc = "Find and Replace" })
